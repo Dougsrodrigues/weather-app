@@ -15,7 +15,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import themes from './themes';
 
 import weather from './assets/fonts/weather.ttf';
-import { WeatherScreen } from '../modules/Weather/screen/WeatherScreen';
+import { WeatherScreen } from '../modules/Weather/ui/screens/weather';
 
 export default function App() {
   const deviceTheme = useColorScheme();
