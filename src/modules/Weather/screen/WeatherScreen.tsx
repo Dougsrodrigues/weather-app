@@ -1,6 +1,6 @@
 import React from 'react';
-import { Icon } from '../../components/atoms/Icon/Icon';
-import { StyledText } from '../../components/atoms/typography';
+import { Icon } from '../../../app/components/Icon';
+import { StyledText } from '../../../app/components/typography/StyledText';
 import { Container, WeatherHeaderInfo, WeatherTypesContent } from './styles';
 
 export function WeatherScreen() {
