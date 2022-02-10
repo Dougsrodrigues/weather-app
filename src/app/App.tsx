@@ -12,10 +12,10 @@ import { useColorScheme } from 'react-native';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import themes from '../styles';
+import themes from './themes';
 
 import weather from './assets/fonts/weather.ttf';
-import { WeatherScreen } from '../screens/Weather/WeatherScreen';
+import { WeatherScreen } from '../modules/Weather/screen/WeatherScreen';
 
 export default function App() {
   const deviceTheme = useColorScheme();
