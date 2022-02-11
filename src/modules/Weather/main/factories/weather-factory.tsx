@@ -1,12 +1,7 @@
 import React from 'react';
-import { makeAxiosHttpClient } from '@/app/main/factories/axios-http-client-factory';
-import { WeatherScreen } from '../../ui/screens/weather';
-import { GetCurrentWeatherUseCase } from '../../use-cases/get-current-weather';
+import { WeatherScreen } from '../../presentation/screens/weather';
+import { makeGetWeatherUseCase } from './get-weather-use-case-factory';
 
 export const MakeWeather: React.FC = () => {
-  return (
-    <WeatherScreen
-      getWeatherUseCase={new GetCurrentWeatherUseCase(makeAxiosHttpClient())}
-    />
-  );
+  return <WeatherScreen getWeatherUseCase={makeGetWeatherUseCase()} />;
 };
