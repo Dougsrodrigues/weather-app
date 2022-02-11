@@ -1,7 +1,10 @@
+/* eslint-disable import/no-duplicates */
 import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import * as Location from 'expo-location';
 import { Alert } from 'react-native';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import { weatherApi } from '../infra/apis/weather-api';
 
 const useGetWeather = (lat: number, long: number) => {
@@ -52,10 +55,8 @@ export const useGetCurrentWeather = () => {
   const formattedData = useMemo(() => {
     return {
       city: data?.name,
-      today: new Date().toLocaleDateString('pt-BR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+      today: format(new Date(), `EEEE, dd 'de ' MMMM`, {
+        locale: ptBR,
       }),
       weather: {
         temperature: `${String(data?.main.temp).slice(0, 2)} c`,
