@@ -13,10 +13,12 @@ import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
-import themes from './themes';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import themes from '../themes';
 
-import weather from './assets/fonts/weather.ttf';
-import { WeatherScreen } from '../modules/Weather/ui/screens/weather';
+import weather from '../assets/fonts/weather.ttf';
+import { MakeWeather } from '../../modules/Weather/main/factories/weather-factory';
 
 const queryClient = new QueryClient();
 
@@ -32,7 +34,7 @@ export default function App() {
     RobotoSlab_600SemiBold,
     weather,
   });
-
+  const Stack = createNativeStackNavigator();
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -41,7 +43,15 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={{ ...typography, ...theme }}>
         <SafeAreaProvider>
-          <WeatherScreen />
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Home"
+                component={MakeWeather}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
         </SafeAreaProvider>
       </ThemeProvider>
     </QueryClientProvider>

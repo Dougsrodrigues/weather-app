@@ -34,6 +34,12 @@ export const SmallText = styled(StyledText).attrs(({ theme }) => ({
     `}
 `;
 
+export const EmptyText = styled(StyledText).attrs(({ theme }) => ({
+  color: theme.colors.text_primary,
+}))<{ withMargin?: boolean }>`
+  margin-top: ${RFValue(32)}px;
+`;
+
 export const Degrees = styled(StyledText).attrs(({ theme }) => ({
   size: 'extraMedium',
   color: theme.colors.text_primary,
