@@ -26,9 +26,9 @@ export function createSerializedApiError(
       isSerializedApiError: true,
       status: response?.status ?? 500,
 
-      message: response?.data?.message,
+      statusText: response?.data?.message,
     };
   }
 
-  return { isSerializedApiError: true, status: 500, message: String(error) };
+  return { isSerializedApiError: true, status: 500, statusText: String(error) };
 }

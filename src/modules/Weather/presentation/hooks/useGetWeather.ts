@@ -15,6 +15,8 @@ const useGetCurrentWeather = (
   const {
     data,
     isLoading,
+    isError,
+    status,
     isFetching,
     refetch: handleRefreshAndGetWeather,
   } = useQuery(
@@ -24,6 +26,8 @@ const useGetCurrentWeather = (
       enabled: lat !== 0 && long !== 0,
     },
   );
+
+  console.log({ isError, status });
 
   return {
     data,
@@ -61,6 +65,8 @@ export const useGetWeather = (getWeatherUseCase: IGetCurrentWeather) => {
     );
 
   const formattedData = useMemo(() => {
+    if (data?.status !== 200) return null;
+
     return {
       city: data?.name,
       today: format(new Date(), `EEEE, dd 'de ' MMMM`, {
