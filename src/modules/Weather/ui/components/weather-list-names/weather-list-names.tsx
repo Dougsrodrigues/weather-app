@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { BoxShadow } from '../../../../../app/components/BoxShadow';
 import { IWeather } from '../../../domain/types';
 import { WeatherTypes } from '../weather-types/weather-types';
@@ -60,6 +60,11 @@ export const WeatherListNames = () => {
 
   const keyExtractor = ({ id }: IWeather): string => id.toString();
 
+  const renderWeatherItem = useCallback(
+    ({ item }) => <WeatherTypes item={item} />,
+    [],
+  );
+
   return (
     <BoxShadow>
       <WeatherHeaderInfoList<IWeather>
@@ -68,7 +73,7 @@ export const WeatherListNames = () => {
         showsHorizontalScrollIndicator={false}
         data={arrayWeather}
         keyExtractor={keyExtractor}
-        renderItem={({ item }) => <WeatherTypes item={item} />}
+        renderItem={renderWeatherItem}
       />
     </BoxShadow>
   );
