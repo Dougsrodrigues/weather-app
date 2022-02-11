@@ -12,10 +12,13 @@ import { useColorScheme } from 'react-native';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import themes from './themes';
 
 import weather from './assets/fonts/weather.ttf';
 import { WeatherScreen } from '../modules/Weather/ui/screens/weather';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const deviceTheme = useColorScheme();
@@ -35,10 +38,12 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={{ ...typography, ...theme }}>
-      <SafeAreaProvider>
-        <WeatherScreen />
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={{ ...typography, ...theme }}>
+        <SafeAreaProvider>
+          <WeatherScreen />
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
