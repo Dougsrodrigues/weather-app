@@ -24,6 +24,7 @@
     "prettier"
   ],
   "rules": {
+    "no-shadow":"off",
     "class-methods-use-this":"off",
     "no-useless-constructor":"off",
     "react/function-component-definition":"off",

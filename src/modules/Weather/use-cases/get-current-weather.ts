@@ -1,13 +1,14 @@
 import { UnauthorizedError } from '@/app/domain/errors/unauthorized-error';
 import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
+import { HttpClient } from '@/app/domain/types/http-interfaces';
 import { env } from '@/app/infra/env';
-import { AxiosHttpClient } from '@/app/infra/http/axios-http-client';
+import { IWeatherResponse } from '../domain/types';
 import { IGetCurrentWeather } from '../domain/use-cases/get-current-weather-interface';
 
 export class GetCurrentWeatherUseCase implements IGetCurrentWeather {
-  constructor(private readonly httpClient: AxiosHttpClient) {}
+  constructor(private readonly httpClient: HttpClient<IWeatherResponse>) {}
 
-  async getCurrentWeather(lat: number, lon: number) {
+  async getCurrentWeather(lat: number, lon: number): Promise<IWeatherResponse> {
     const endpoint = `/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${env.OPEN_WEATHER_API_KEY}&&lang=pt_br`;
 
     const { httpResponse } = await this.httpClient.request({
