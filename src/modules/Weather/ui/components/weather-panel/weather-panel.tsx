@@ -54,7 +54,7 @@ export const WeatherPanel = () => {
         resizeMode={FastImage.resizeMode.contain}
       />
 
-      <Degrees>{formattedData.weather.temperature} c</Degrees>
+      <Degrees>{formattedData.weather.temperature}</Degrees>
 
       <Row>
         <WeatherInfo
