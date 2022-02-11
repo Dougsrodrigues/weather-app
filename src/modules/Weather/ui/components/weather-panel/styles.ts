@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { ActivityIndicator } from 'react-native';
 import { Icon } from '../../../../../app/components/Icon';
 import { StyledText } from '../../../../../app/components/typography/StyledText';
 
@@ -39,3 +40,8 @@ export const Degrees = styled(StyledText).attrs(({ theme }) => ({
 }))`
   margin-top: ${RFValue(32)}px;
 `;
+
+export const Loading = styled(ActivityIndicator).attrs(({ theme }) => ({
+  size: 'large',
+  color: theme.colors.text_primary,
+}))``;

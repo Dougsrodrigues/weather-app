@@ -8,34 +8,53 @@ import { WeatherHeaderInfoList } from './styles';
 export const WeatherListNames = () => {
   const arrayWeather: IWeather[] = [
     {
-      id: 1,
-      weather: 'Dia Ensolarado',
-      icon: 'sunny',
+      id: '01d',
+      weather: 'Dia com céu limpo',
     },
     {
-      id: 2,
-      weather: 'Noite Sem Nuvens',
-      icon: 'night',
+      id: '01n',
+      weather: 'Noite com céu limpo',
     },
     {
-      id: 3,
+      id: '02d',
+      weather: 'Dia com nuvens',
+    },
+    {
+      id: '02n',
       weather: 'Noite com nuvens',
-      icon: 'cloud-night',
     },
     {
-      id: 4,
-      weather: 'Dia com chuvas',
-      icon: 'sun-rain',
+      id: '03n',
+      weather: 'Muitas nuvens',
     },
     {
-      id: 5,
-      weather: 'Noite com chuvas',
-      icon: 'night-rain',
+      id: '04n',
+      weather: 'Nublado',
     },
     {
-      id: 6,
-      weather: 'Chuvas fortes',
-      icon: 'rain-thunder',
+      id: '09n',
+      weather: 'Chuva Fraca',
+    },
+    {
+      id: '10d',
+      weather: 'Dia de chuva',
+    },
+    {
+      id: '10n',
+      weather: 'Noite de chuva',
+    },
+    {
+      id: '11d',
+      weather: 'Tempestade',
+    },
+
+    {
+      id: '13n',
+      weather: 'Nevando',
+    },
+    {
+      id: '50d',
+      weather: 'Misto',
     },
   ];
 
@@ -45,6 +64,7 @@ export const WeatherListNames = () => {
     <BoxShadow>
       <WeatherHeaderInfoList<IWeather>
         horizontal
+        removeClippedSubviews
         showsHorizontalScrollIndicator={false}
         data={arrayWeather}
         keyExtractor={keyExtractor}

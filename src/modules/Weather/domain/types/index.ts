@@ -1,5 +1,4 @@
 export interface IWeather {
-  id: number;
+  id: string;
   weather: string;
-  icon: string;
 }
