@@ -23,7 +23,7 @@ export const WeatherPanel = () => {
     formattedData,
   } = useGetCurrentWeather();
 
-  if (isLoading || isFetching) {
+  if (isLoading || isFetching || !data) {
     return (
       <Content>
         <Loading />
