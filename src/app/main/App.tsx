@@ -18,7 +18,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import themes from '../themes';
 
 import weather from '../assets/fonts/weather.ttf';
-import { MakeWeather } from '../../modules/Weather/main/factories/weather-factory';
+import { MakeWeather } from '../../modules/weather/main/factories/weather-factory';
 
 const queryClient = new QueryClient();
 

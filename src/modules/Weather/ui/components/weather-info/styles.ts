@@ -1,6 +1,6 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled, { css } from 'styled-components/native';
-import { StyledText } from '../../../../../app/components/typography/StyledText';
+import { StyledText } from '../../../../../app/components';
 
 export const ContentInfo = styled.View`
   margin-top: ${RFValue(32)}px;

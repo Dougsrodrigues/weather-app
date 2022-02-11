@@ -1,9 +1,9 @@
 import React from 'react';
 import FastImage from 'react-native-fast-image';
-import { TouchableOpacity, View, Text } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { Row } from '../../../../../app/components/Row';
 
+import { Row } from '@/app/components';
 import { WeatherInfo } from '../weather-info/weather-info';
 import {
   Content,

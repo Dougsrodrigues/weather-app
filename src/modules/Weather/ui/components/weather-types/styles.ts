@@ -1,8 +1,7 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
-import { Icon } from '../../../../../app/components/Icon';
-import { StyledText } from '../../../../../app/components/typography/StyledText';
+import { Icon, StyledText } from '../../../../../app/components';
 
 export const WeatherTypesContent = styled.View`
   padding: ${RFValue(8)}px;

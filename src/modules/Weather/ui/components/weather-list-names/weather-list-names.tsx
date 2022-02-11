@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { BoxShadow } from '../../../../../app/components/BoxShadow';
+import { BoxShadow } from '../../../../../app/components';
 import { IWeather } from '../../../domain/types';
 import { WeatherTypes } from '../weather-types/weather-types';
 
