@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { HttpRequest } from '../../domain/types/http-interfaces';
+import { HttpRequest } from '@/app/domain/types/http-interfaces';
 
 export class AxiosHttpClient {
   constructor(private readonly api: AxiosInstance) {}

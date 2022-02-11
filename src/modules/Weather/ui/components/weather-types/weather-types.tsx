@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import FastImage from 'react-native-fast-image';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { IWeather } from '../../../domain/types';
+import { IWeather } from '@/modules/weather/domain/types';
+
 import { ImageStyled, Text, WeatherTypesContent } from './styles';
 
 interface WeatherTypesProps {

@@ -15,10 +15,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MakeWeather } from '@/modules/weather/main/factories/weather-factory';
 import themes from '../themes';
 
 import weather from '../assets/fonts/weather.ttf';
-import { MakeWeather } from '../../modules/weather/main/factories/weather-factory';
 
 const queryClient = new QueryClient();
 

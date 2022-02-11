@@ -1,6 +1,6 @@
+import { BoxShadow } from '@/app/components';
+import { IWeather } from '@/modules/weather/domain/types';
 import React, { useCallback } from 'react';
-import { BoxShadow } from '../../../../../app/components';
-import { IWeather } from '../../../domain/types';
 import { WeatherTypes } from '../weather-types/weather-types';
 
 import { WeatherHeaderInfoList } from './styles';

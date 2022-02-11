@@ -1,5 +1,5 @@
+import { SerializedApiError } from '@/app/domain/types';
 import { AxiosError } from 'axios';
-import { SerializedApiError } from '../../../domain/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAxiosError(e: any): e is AxiosError {

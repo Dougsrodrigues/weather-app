@@ -1,4 +1,4 @@
-import { AxiosHttpClient } from '../../../app/infra/http/axios-http-client';
+import { AxiosHttpClient } from '@/app/infra/http/axios-http-client';
 import { IGetCurrentWeather } from '../domain/use-cases/get-current-weather-interface';
 
 export class GetCurrentWeatherUseCase implements IGetCurrentWeather {
