@@ -25,7 +25,7 @@ const queryClient = new QueryClient();
 export default function App() {
   const deviceTheme = useColorScheme();
   const { typography } = themes;
-  const theme = themes[deviceTheme] || themes.dark;
+  const theme = themes[deviceTheme] || themes.light;
 
   const [fontsLoaded] = useFonts({
     RobotoSlab_400Regular,
