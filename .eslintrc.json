@@ -15,7 +15,7 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project":"./tsconfig-eslint.json"
+    "project": "./tsconfig-eslint.json"
   },
   "plugins": [
     "react",
@@ -24,15 +24,21 @@
     "prettier"
   ],
   "rules": {
-    "no-shadow":"off",
-    "class-methods-use-this":"off",
-    "no-useless-constructor":"off",
-    "react/function-component-definition":"off",
-    "import/prefer-default-export":"off",
-    "react/jsx-props-no-spreading":"off",
-    "react/prop-types":"off",
-    "camelcase":"off",
-    "react/require-default-props":"off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "no-shadow": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "camelcase": "off",
+    "react/require-default-props": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
