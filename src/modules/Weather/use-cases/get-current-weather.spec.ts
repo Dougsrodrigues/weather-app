@@ -10,8 +10,6 @@ import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
 import { IWeatherResponse } from '../domain/types';
 import { GetCurrentWeatherUseCase } from './get-current-weather';
 
-jest.mock('axios');
-
 export const mockHttpResponse = (
   status = faker.random.number(),
 ): IWeatherResponse => ({

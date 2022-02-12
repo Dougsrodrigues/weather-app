@@ -68,6 +68,7 @@
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.ts",
       "@testing-library/jest-native/extend-expect"
     ],
     "transformIgnorePatterns": [
