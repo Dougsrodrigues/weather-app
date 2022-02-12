@@ -1,6 +1,8 @@
 module.exports = function (api) {
-  api.cache(true);
-  return {
+
+  const babelEnv = api.env()
+
+  const baseConfig = {
     presets: ['babel-preset-expo'],
     plugins: [
       [
@@ -20,5 +22,22 @@ module.exports = function (api) {
         }
       ]
     ]
+  }
+
+  const isInTesting = babelEnv === 'test'
+
+  if (isInTesting)
+    return {
+      ...baseConfig,
+      plugins: [
+        ...baseConfig.plugins,
+        // Mock .env during testing
+        'react-native-config-node/transform',
+      ],
+    }
+
+  return {
+    ...baseConfig,
+    plugins: [...baseConfig.plugins,]
   };
 };
