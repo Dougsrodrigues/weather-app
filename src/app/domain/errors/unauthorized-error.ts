@@ -1,6 +1,6 @@
 export class UnauthorizedError extends Error {
-  constructor(readonly message: string) {
-    super(message);
+  constructor() {
+    super('Você não tem permissão.');
     this.name = 'UnexpectedError';
   }
 }

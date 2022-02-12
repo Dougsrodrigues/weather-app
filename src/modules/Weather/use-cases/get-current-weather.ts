@@ -20,10 +20,10 @@ export class GetCurrentWeatherUseCase implements IGetCurrentWeather {
       case 200:
         return httpResponse;
       case 401:
-        throw new UnauthorizedError(httpResponse.statusText);
+        throw new UnauthorizedError();
 
       default:
-        throw new UnexpectedError(httpResponse.statusText);
+        throw new UnexpectedError();
     }
   }
 }
