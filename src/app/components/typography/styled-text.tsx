@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 
 interface StyledTextProps {
   family?: 'regular' | 'medium' | 'light' | 'semiBold';
@@ -20,6 +20,7 @@ function StyledText({
   ...rest
 }: Props) {
   const theme = useTheme();
+
   const fontFamily = theme.fonts.families[family];
   const fontSize = theme.fonts.sizes[size];
 
