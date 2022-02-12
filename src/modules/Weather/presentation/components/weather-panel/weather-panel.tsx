@@ -44,7 +44,7 @@ export const WeatherPanel = ({
       </View>
 
       {!formattedData ? (
-        <EmptyText>Conteúdo Vazio</EmptyText>
+        <EmptyText testID="empty-state-text">Conteúdo Vazio</EmptyText>
       ) : (
         <>
           <Title>{formattedData.city}</Title>
