@@ -1,11 +1,15 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
-import { HttpRequest } from '@/app/domain/types/http-interfaces';
+import {
+  HttpClient,
+  HttpRequest,
+  HttpResponse,
+} from '@/app/domain/types/http-interfaces';
 
-export class AxiosHttpClient {
+export class AxiosHttpClient implements HttpClient {
   constructor(private readonly api: AxiosInstance) {}
 
-  async request(params: HttpRequest) {
-    let httpResponse: AxiosResponse<any>;
+  async request(params: HttpRequest): Promise<HttpResponse> {
+    let httpResponse: AxiosResponse;
     try {
       const { data, status } = await this.api.request({
         url: params.url,
