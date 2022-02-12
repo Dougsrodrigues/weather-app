@@ -24,7 +24,7 @@ export const mockAxios = (): jest.Mocked<typeof axios> => {
   return mockedAxios;
 };
 
-class HttpClientSpy<R = any> implements HttpClient<R> {
+export class HttpClientSpy<R = any> implements HttpClient<R> {
   response: HttpResponse<R>;
 
   constructor(private api: AxiosInstance) {}
