@@ -1,10 +1,11 @@
+import { render } from '@/app/tests';
 import { IWeatherResponse } from '../../domain/types';
 import { GetCurrentWeatherUseCase } from '../../use-cases/get-current-weather';
 import {
   HttpClientSpy,
   mockAxios,
 } from '../../use-cases/get-current-weather.spec';
-import { renderWithProviders } from './render';
+
 import { WeatherScreen } from './weather';
 
 const renderComponent = () => {
@@ -12,9 +13,7 @@ const renderComponent = () => {
   const httpClientSpy = new HttpClientSpy<IWeatherResponse>(api);
   const getWeatherUseCase = new GetCurrentWeatherUseCase(httpClientSpy);
 
-  return renderWithProviders(
-    <WeatherScreen getWeatherUseCase={getWeatherUseCase} />,
-  );
+  return render(<WeatherScreen getWeatherUseCase={getWeatherUseCase} />);
 };
 
 describe('WeatherScreen', () => {
