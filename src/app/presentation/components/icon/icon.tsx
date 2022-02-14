@@ -2,7 +2,7 @@ import React, { ComponentProps, FC, useEffect, memo } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { createIconSetFromFontello } from 'react-native-vector-icons';
 
-import config from '../../assets/icons/weather-icons.json';
+import config from '../../../assets/icons/weather-icons.json';
 
 const WTIcon = createIconSetFromFontello(config);
 

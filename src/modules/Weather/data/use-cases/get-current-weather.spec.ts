@@ -1,71 +1,26 @@
-import axios, { AxiosInstance } from 'axios';
 import faker from 'faker';
-import {
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-} from '@/app/domain/types/http-interfaces';
 import { UnauthorizedError } from '@/app/domain/errors/unauthorized-error';
 import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
-import { IWeatherResponse } from '../domain/types';
+
+import { mockHttpResponse } from '@/app/infra/tests/mock-axios';
+import { HttpClientSpy } from '@/app/infra/tests/mock-http';
 import { GetCurrentWeatherUseCase } from './get-current-weather';
-
-export const mockHttpResponse = (
-  status = faker.random.number(),
-): IWeatherResponse => ({
-  ...faker.random.objectElement(),
-  status,
-});
-
-export const mockAxios = (): jest.Mocked<typeof axios> => {
-  const mockedAxios = axios as jest.Mocked<typeof axios>;
-  mockedAxios.request.mockClear().mockResolvedValue(mockHttpResponse());
-
-  return mockedAxios;
-};
-
-export class HttpClientSpy<R = any> implements HttpClient<R> {
-  response: HttpResponse<R>;
-
-  constructor(private api: AxiosInstance) {}
-
-  async request(data: HttpRequest): Promise<HttpResponse<R>> {
-    return this.response;
-  }
-}
+import { IWeatherResponse } from '../../domain/types';
+import { mockWeather } from '../tests/mock-weather';
 
 const makeSut = () => {
-  const api = mockAxios();
-
-  const httpClientSpy = new HttpClientSpy<IWeatherResponse>(api);
+  const httpClientSpy = new HttpClientSpy<IWeatherResponse>();
 
   const sut = new GetCurrentWeatherUseCase(httpClientSpy);
 
   return { sut, httpClientSpy };
 };
 
-export const mockWeatherModel = (): IWeatherResponse => ({
-  status: 200,
-  statusText: faker.random.word(),
-  name: faker.random.word(),
-  main: {
-    temp: faker.random.number(),
-    temp_max: faker.random.number(),
-    temp_min: faker.random.number(),
-    humidity: faker.random.number(),
-  },
-  weather: [
-    {
-      icon: faker.random.word(),
-    },
-  ],
-});
-
 describe('GetCurrentWeather', () => {
   it('Should return an IWeatherResponse if status 200', async () => {
     const { sut, httpClientSpy } = makeSut();
 
-    const httpResult = mockWeatherModel();
+    const httpResult = mockWeather();
 
     httpClientSpy.response = {
       httpResponse: httpResult,

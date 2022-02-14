@@ -30,8 +30,6 @@ export const WeatherPanel = ({
     );
   }
 
-  console.log(!formattedData);
-
   return (
     <Content>
       <View>

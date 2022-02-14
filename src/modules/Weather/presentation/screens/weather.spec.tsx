@@ -2,9 +2,9 @@
 import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
 import { ILocation } from '@/app/domain/types/expo-location';
 import { render } from '@/app/infra/tests';
+import { mockWeatherModel } from '../../data/use-cases/get-current-weather.spec';
 import { IWeatherResponse } from '../../domain/types';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
-import { mockWeatherModel } from '../../use-cases/get-current-weather.spec';
 
 import { WeatherScreen } from './weather';
 
@@ -60,7 +60,10 @@ describe('WeatherScreen', () => {
   it('Should render empty text if doesnt have data', async () => {
     const { sut, getWeatherUseCase } = makeSut();
     const error = new UnexpectedError();
-    jest.spyOn(getWeatherUseCase, 'getCurrentWeather').mockRejectedValue(error);
+
+    jest
+      .spyOn(getWeatherUseCase, 'getCurrentWeather')
+      .mockReturnValueOnce(Promise.reject(error));
 
     const empty = await sut.findByText('Conteúdo Vazio');
 

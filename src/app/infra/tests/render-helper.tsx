@@ -5,7 +5,9 @@ import { ThemeProvider } from 'styled-components/native';
 import themes from '@/app/themes';
 import typography from '@/app/themes/typography';
 
-export function renderWithProviders(ui: JSX.Element) {
+export * from '@testing-library/react-native';
+
+export function render(ui: JSX.Element) {
   const theme = themes.light;
   const queryClient = new QueryClient();
 

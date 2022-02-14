@@ -26,8 +26,6 @@ const useGetCurrentWeather = (
     },
   );
 
-  console.log(data);
-
   return {
     data,
     isLoading,
