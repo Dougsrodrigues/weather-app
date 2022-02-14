@@ -1,3 +1,4 @@
+import { ILocation } from '@/app/domain/types/expo-location';
 import React, { FC } from 'react';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
 
@@ -8,13 +9,15 @@ import { Container } from './styles';
 
 interface WeatherScreenProps {
   getWeatherUseCase: IGetCurrentWeather;
+  location: ILocation;
 }
 
 export const WeatherScreen: FC<WeatherScreenProps> = ({
   getWeatherUseCase,
+  location,
 }) => {
   const { isLoading, isFetching, handleRefreshAndGetWeather, formattedData } =
-    useGetWeather(getWeatherUseCase);
+    useGetWeather(getWeatherUseCase, location);
 
   return (
     <Container>

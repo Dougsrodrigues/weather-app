@@ -1,10 +1,10 @@
 /* eslint-disable import/no-duplicates */
 import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
-import * as Location from 'expo-location';
 import { Alert } from 'react-native';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { ILocation } from '@/app/domain/types/expo-location';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
 
 const useGetCurrentWeather = (
@@ -15,8 +15,7 @@ const useGetCurrentWeather = (
   const {
     data,
     isLoading,
-    isError,
-    status,
+
     isFetching,
     refetch: handleRefreshAndGetWeather,
   } = useQuery(
@@ -27,7 +26,7 @@ const useGetCurrentWeather = (
     },
   );
 
-  console.log({ isError, status });
+  console.log(data);
 
   return {
     data,
@@ -37,7 +36,10 @@ const useGetCurrentWeather = (
   };
 };
 
-export const useGetWeather = (getWeatherUseCase: IGetCurrentWeather) => {
+export const useGetWeather = (
+  getWeatherUseCase: IGetCurrentWeather,
+  remoteLocation: ILocation,
+) => {
   const [location, setLocation] = useState({
     coords: {
       latitude: 0,
@@ -46,13 +48,14 @@ export const useGetWeather = (getWeatherUseCase: IGetCurrentWeather) => {
   });
 
   const getLocation = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
+    const { status } = await remoteLocation.requestForegroundPermissionsAsync();
+
     if (status !== 'granted') {
       Alert.alert('Permissões foram negadas.');
 
       return;
     }
-    const resp = await Location.getCurrentPositionAsync();
+    const resp = await remoteLocation.getCurrentPositionAsync();
 
     setLocation(resp);
   };
