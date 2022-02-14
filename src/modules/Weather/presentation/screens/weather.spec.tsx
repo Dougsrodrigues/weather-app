@@ -1,11 +1,10 @@
+/* eslint-disable max-classes-per-file */
+import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
 import { ILocation } from '@/app/domain/types/expo-location';
 import { render } from '@/app/infra/tests';
 import { IWeatherResponse } from '../../domain/types';
-import { GetCurrentWeatherUseCase } from '../../use-cases/get-current-weather';
-import {
-  HttpClientSpy,
-  mockAxios,
-} from '../../use-cases/get-current-weather.spec';
+import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
+import { mockWeatherModel } from '../../use-cases/get-current-weather.spec';
 
 import { WeatherScreen } from './weather';
 
@@ -26,25 +25,53 @@ class LocationSpy implements ILocation {
   }
 }
 
-const makeSut = () => {
-  const api = mockAxios();
-  const httpClientSpy = new HttpClientSpy<IWeatherResponse>(api);
-  const getWeatherUseCase = new GetCurrentWeatherUseCase(httpClientSpy);
+class GetCurrentWeatherUseCaseSpy implements IGetCurrentWeather {
+  response = mockWeatherModel();
 
-  return render(
+  lat = 0;
+
+  long = 0;
+
+  async getCurrentWeather(
+    lat: number,
+    long: number,
+  ): Promise<IWeatherResponse> {
+    this.lat = lat;
+    this.long = long;
+
+    return this.response;
+  }
+}
+
+const makeSut = () => {
+  const getWeatherUseCase = new GetCurrentWeatherUseCaseSpy();
+
+  const sut = render(
     <WeatherScreen
       getWeatherUseCase={getWeatherUseCase}
       location={new LocationSpy()}
     />,
   );
+
+  return { sut, getWeatherUseCase };
 };
 
 describe('WeatherScreen', () => {
-  it.only('Should render empty text if doesnt have data', async () => {
-    const { findByTestId } = makeSut();
+  it('Should render empty text if doesnt have data', async () => {
+    const { sut, getWeatherUseCase } = makeSut();
+    const error = new UnexpectedError();
+    jest.spyOn(getWeatherUseCase, 'getCurrentWeather').mockRejectedValue(error);
 
-    const empty = await findByTestId('empty-state-text');
+    const empty = await sut.findByText('Conteúdo Vazio');
 
-    // console.log({ empty });
+    expect(empty).toBeTruthy();
+  });
+
+  it('Should render weather if have data', async () => {
+    const { sut } = makeSut();
+
+    const cityNameComponent = await sut.findByTestId('city-name');
+
+    expect(cityNameComponent).toBeTruthy();
   });
 });
