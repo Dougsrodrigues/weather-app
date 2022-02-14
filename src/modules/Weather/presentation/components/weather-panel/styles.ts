@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { ActivityIndicator } from 'react-native';
-import { Icon, StyledText } from '@/app/components';
+import { Icon, StyledText } from '@/app/presentation/components';
 
 export const Content = styled.View`
   justify-content: center;

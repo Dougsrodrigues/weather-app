@@ -3,7 +3,7 @@ import FastImage from 'react-native-fast-image';
 import { TouchableOpacity, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-import { Row } from '@/app/components/';
+import { Row } from '@/app/presentation/components';
 
 import { WeatherInfo } from '../weather-info/weather-info';
 import {

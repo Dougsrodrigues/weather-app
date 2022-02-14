@@ -1,4 +1,4 @@
-import { StyledText } from '@/app/components';
+import { StyledText } from '@/app/presentation/components';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled, { css } from 'styled-components/native';
 
