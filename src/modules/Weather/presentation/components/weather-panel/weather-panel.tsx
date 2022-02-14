@@ -30,6 +30,8 @@ export const WeatherPanel = ({
     );
   }
 
+  console.log(!formattedData);
+
   return (
     <Content>
       <View>
@@ -44,10 +46,10 @@ export const WeatherPanel = ({
       </View>
 
       {!formattedData ? (
-        <EmptyText testID="empty-state-text">Conteúdo Vazio</EmptyText>
+        <EmptyText>Conteúdo Vazio</EmptyText>
       ) : (
         <>
-          <Title>{formattedData.city}</Title>
+          <Title testID="city-name">{formattedData.city}</Title>
           <SmallText withMargin>{formattedData.today}</SmallText>
 
           <FastImage
