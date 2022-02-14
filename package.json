@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --runInBand --detectOpenHandles"
   },
   "dependencies": {
     "@expo-google-fonts/roboto-slab": "^0.2.2",
@@ -68,7 +68,7 @@
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.ts",
+      "<rootDir>/jest.setup.ts",
       "@testing-library/jest-native/extend-expect"
     ],
     "transformIgnorePatterns": [
