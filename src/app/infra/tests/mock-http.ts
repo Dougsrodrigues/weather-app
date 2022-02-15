@@ -1,8 +1,4 @@
-import {
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-} from '@/app/domain/types/http-interfaces';
+import { HttpClient, HttpRequest, HttpResponse } from '@/app/domain/types';
 
 export class HttpClientSpy<R = any> implements HttpClient<R> {
   response: HttpResponse<R>;

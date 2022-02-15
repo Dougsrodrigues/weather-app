@@ -1,4 +1,4 @@
-import { ILocation } from '@/app/domain/types/expo-location';
+import { ILocation } from '@/app/domain/types';
 
 export class LocationSpy implements ILocation {
   async requestPermissions(): Promise<{ status: string }> {

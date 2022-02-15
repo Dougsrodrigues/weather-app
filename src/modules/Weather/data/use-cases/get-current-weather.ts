@@ -1,6 +1,6 @@
 import { UnauthorizedError } from '@/app/domain/errors/unauthorized-error';
 import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
-import { HttpClient, HttpStatusCode } from '@/app/domain/types/http-interfaces';
+import { HttpClient, HttpStatusCode } from '@/app/domain/types';
 import { env } from '@/app/infra/env';
 import { IWeatherResponse } from '../../domain/types';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';

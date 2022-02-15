@@ -1,9 +1,5 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
-import {
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-} from '@/app/domain/types/http-interfaces';
+import { HttpClient, HttpRequest, HttpResponse } from '@/app/domain/types';
 
 export class AxiosHttpClient implements HttpClient {
   constructor(private readonly api: AxiosInstance) {}

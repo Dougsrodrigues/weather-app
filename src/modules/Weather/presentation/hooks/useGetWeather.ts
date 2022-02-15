@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { Alert } from 'react-native';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ILocation } from '@/app/domain/types/expo-location';
+import { ILocation } from '@/app/domain/types';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
 
 const useGetCurrentWeather = (

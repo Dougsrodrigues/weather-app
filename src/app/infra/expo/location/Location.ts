@@ -1,4 +1,4 @@
-import { ILocation } from '@/app/domain/types/expo-location';
+import { ILocation } from '@/app/domain/types';
 
 import * as ExpoLocation from 'expo-location';
 

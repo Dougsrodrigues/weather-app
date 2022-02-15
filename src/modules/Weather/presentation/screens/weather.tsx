@@ -1,4 +1,4 @@
-import { ILocation } from '@/app/domain/types/expo-location';
+import { ILocation } from '@/app/domain/types';
 import React, { FC } from 'react';
 import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
 
