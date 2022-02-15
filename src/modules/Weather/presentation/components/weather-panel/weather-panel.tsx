@@ -25,7 +25,7 @@ export const WeatherPanel = ({
   if (isLoading || isFetching) {
     return (
       <Content>
-        <Loading />
+        <Loading testID="loading" />
       </Content>
     );
   }
@@ -39,7 +39,7 @@ export const WeatherPanel = ({
             handleRefreshAndGetWeather();
           }}
         >
-          <IconStyled name="refresh" size={50} />
+          <IconStyled name="refresh" size={50} testID="refresh" />
         </TouchableOpacity>
       </View>
 
