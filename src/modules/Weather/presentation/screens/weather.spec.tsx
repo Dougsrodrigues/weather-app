@@ -1,56 +1,17 @@
 /* eslint-disable max-classes-per-file */
 import { UnexpectedError } from '@/app/domain/errors/unexpected-error';
-import { ILocation } from '@/app/domain/types/expo-location';
-import { render } from '@/app/infra/tests';
-import { mockWeatherModel } from '../../data/use-cases/get-current-weather.spec';
-import { IWeatherResponse } from '../../domain/types';
-import { IGetCurrentWeather } from '../../domain/use-cases/get-current-weather-interface';
+import { render, fireEvent } from '@/app/infra/tests';
+import { LocationSpy } from '@/app/infra/tests/mock-location';
+import { GetCurrentWeatherUseCaseSpy } from '../../data/tests/mock-weather';
 
 import { WeatherScreen } from './weather';
 
-class LocationSpy implements ILocation {
-  async requestForegroundPermissionsAsync(): Promise<{ status: string }> {
-    return { status: 'granted' };
-  }
-
-  async getCurrentPositionAsync(): Promise<{
-    coords: { latitude: number; longitude: number };
-  }> {
-    return {
-      coords: {
-        latitude: 12,
-        longitude: 12,
-      },
-    };
-  }
-}
-
-class GetCurrentWeatherUseCaseSpy implements IGetCurrentWeather {
-  response = mockWeatherModel();
-
-  lat = 0;
-
-  long = 0;
-
-  async getCurrentWeather(
-    lat: number,
-    long: number,
-  ): Promise<IWeatherResponse> {
-    this.lat = lat;
-    this.long = long;
-
-    return this.response;
-  }
-}
-
 const makeSut = () => {
   const getWeatherUseCase = new GetCurrentWeatherUseCaseSpy();
+  const location = new LocationSpy();
 
   const sut = render(
-    <WeatherScreen
-      getWeatherUseCase={getWeatherUseCase}
-      location={new LocationSpy()}
-    />,
+    <WeatherScreen getWeatherUseCase={getWeatherUseCase} location={location} />,
   );
 
   return { sut, getWeatherUseCase };
@@ -76,5 +37,17 @@ describe('WeatherScreen', () => {
     const cityNameComponent = await sut.findByTestId('city-name');
 
     expect(cityNameComponent).toBeTruthy();
+  });
+
+  it.only('Should render loading and att data if button was click', async () => {
+    const { sut } = makeSut();
+
+    const buttonRefresh = sut.getByTestId('refresh');
+
+    fireEvent(buttonRefresh, 'onPress');
+
+    const refreshIcon = sut.findByTestId('loading');
+
+    expect(refreshIcon).toBeTruthy();
   });
 });
