@@ -1,5 +1,5 @@
 export interface ILocation {
-  requestForegroundPermissionsAsync: () => Promise<{ status: string }>;
+  requestPermissions: () => Promise<{ status: string }>;
   getCurrentPositionAsync: () => Promise<{
     coords: { latitude: number; longitude: number };
   }>;

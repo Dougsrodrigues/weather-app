@@ -15,7 +15,6 @@ const useGetCurrentWeather = (
   const {
     data,
     isLoading,
-
     isFetching,
     refetch: handleRefreshAndGetWeather,
   } = useQuery(
@@ -36,9 +35,9 @@ const useGetCurrentWeather = (
 
 export const useGetWeather = (
   getWeatherUseCase: IGetCurrentWeather,
-  remoteLocation: ILocation,
+  location: ILocation,
 ) => {
-  const [location, setLocation] = useState({
+  const [coordinations, setCoordinations] = useState({
     coords: {
       latitude: 0,
       longitude: 0,
@@ -46,22 +45,22 @@ export const useGetWeather = (
   });
 
   const getLocation = async () => {
-    const { status } = await remoteLocation.requestForegroundPermissionsAsync();
+    const { status } = await location.requestPermissions();
 
     if (status !== 'granted') {
       Alert.alert('Permissões foram negadas.');
 
       return;
     }
-    const resp = await remoteLocation.getCurrentPositionAsync();
+    const resp = await location.getCurrentPositionAsync();
 
-    setLocation(resp);
+    setCoordinations(resp);
   };
 
   const { data, isLoading, handleRefreshAndGetWeather, isFetching } =
     useGetCurrentWeather(
-      location.coords.latitude,
-      location.coords.longitude,
+      coordinations.coords.latitude,
+      coordinations.coords.longitude,
       getWeatherUseCase,
     );
 

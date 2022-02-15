@@ -3,7 +3,7 @@ import { ILocation } from '@/app/domain/types/expo-location';
 import * as ExpoLocation from 'expo-location';
 
 export class Location implements ILocation {
-  async requestForegroundPermissionsAsync(): Promise<{ status: string }> {
+  async requestPermissions(): Promise<{ status: string }> {
     const { status } = await ExpoLocation.requestForegroundPermissionsAsync();
 
     return { status };
@@ -12,7 +12,7 @@ export class Location implements ILocation {
   async getCurrentPositionAsync(): Promise<{
     coords: { latitude: number; longitude: number };
   }> {
-    const coords = ExpoLocation.getCurrentPositionAsync();
+    const coords = await ExpoLocation.getCurrentPositionAsync();
 
     return coords;
   }
