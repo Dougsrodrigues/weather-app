@@ -5,6 +5,14 @@
 Weather App é um app multiplataforma, que te possibilita ver o clima da sua localização de uma maneira rápida e fácil
 
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/41873554/154170181-a7205133-fc3b-4bfc-bab6-c943b6135dc5.png" width="300px"/>
+
+  <img src="https://user-images.githubusercontent.com/41873554/154172021-f49206f0-8893-4ff3-938a-67f742d5678b.png" width="300px" height="650px" />
+</div>
+
+
+
 # Configurações
 Siga as instruções para o download e setup do app
 
